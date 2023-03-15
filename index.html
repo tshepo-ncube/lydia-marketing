@@ -25,6 +25,59 @@
   <link
     href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@500;700&family=Roboto:wght@400;500;700&display=swap"
     rel="stylesheet">
+
+
+    <style>
+      /* snack bar*/
+
+/* Style the snackbar */
+#snackbar {
+  visibility: hidden; /* Hidden by default. Visible when the showSnackbar() function is called */
+  min-width: 250px; /* Set a minimum width */
+  margin-left: -125px; /* Divide value of min-width by 2 to center the snackbar horizontally */
+  background-color: #333; /* Black background color */
+  color: #fff; /* White text color */
+  text-align: center; /* Centered text */
+  border-radius: 2px; /* Rounded corners */
+  padding: 16px; /* Padding */
+  position: fixed; /* Fixed position - Sit on top of the page */
+  z-index: 1; /* Specify a stack order */
+  left: 50%; /* Center the snackbar */
+  bottom: 30px; /* 30px from the bottom */
+}
+
+/* Show the snackbar when the showSnackbar() function is called */
+#snackbar.show {
+  visibility: visible; /* Visible */
+  /* Add animation: Take 0.5 seconds to fade in and out the snackbar */
+  -webkit-animation: fadein 0.5s, fadeout 0.5s 2.5s;
+  animation: fadein 0.5s, fadeout 0.5s 2.5s;
+}
+
+/* Animation for fading in the snackbar */
+@-webkit-keyframes fadein {
+  from {bottom: 0; opacity: 0;} 
+  to {bottom: 30px; opacity: 1;}
+}
+
+@keyframes fadein {
+  from {bottom: 0; opacity: 0;}
+  to {bottom: 30px; opacity: 1;}
+}
+
+/* Animation for fading out the snackbar */
+@-webkit-keyframes fadeout {
+  from {bottom: 30px; opacity: 1;} 
+  to {bottom: 0; opacity: 0;}
+}
+
+@keyframes fadeout {
+  from {bottom: 30px; opacity: 1;}
+  to {bottom: 0; opacity: 0;}
+}
+
+
+    </style>
 </head>
 
 <body id="top">
@@ -66,7 +119,7 @@
           </li>
 
           <li>
-            <a href="#" class="btn btn-primary">Get Started</a>
+            <a href="started.html" class="btn btn-primary">Get Started</a>
           </li>
 
         </ul>
@@ -104,7 +157,7 @@
               Boost your business with our expert marketing solutions. From strategy to execution, we're here to help you achieve your goals. Contact us today to get started.
             </p>
 
-            <a href="#" class="btn btn-primary">Get Started</a>
+            <a href="started.html" class="btn btn-primary">Get Started</a>
 
           </div>
 
@@ -499,7 +552,7 @@
 
           <h2 class="h2 section-title">Are You Ready? Let's get to Work!</h2>
 
-          <a href="#" class="btn btn-secondary">Get Started</a>
+          <a href="started.html" class="btn btn-secondary">Get Started</a>
 
         </div>
       </section>
@@ -650,7 +703,7 @@
             Get in touch with us today to discuss how we can help grow your business through tailored marketing strategies and expert guidance. We're here to help you achieve your goals.
           </p>
 
-          <form action="" class="contact-form">
+          <form action="" class="contact-form" onsubmit="showSnackbar();">
 
             <div class="input-wrapper">
               <input id="name" type="text" name="name" aria-label="name" placeholder="Your name*" required class="input-field">
@@ -660,12 +713,12 @@
             </div>
 
             <div class="input-wrapper">
-              <input type="text" name="subject" aria-label="subject" placeholder="Subject" class="input-field">
+              <input type="text"  name="subject" id="subject" aria-label="subject" placeholder="Subject" class="input-field">
 
               <input id="phone_number" type="number" name="phone" aria-label="phone" placeholder="Phone number" class="input-field">
             </div>
 
-            <textarea name="message" aria-label="message" placeholder="Your message...*" required
+            <textarea name="message" id="message" aria-label="message" placeholder="Your message...*" required
               class="input-field"></textarea>
 
             <div class="checkbox-wrapper">
@@ -677,9 +730,13 @@
               </label>
             </div>
 
-            <button type="submit" onclick="submitForm()" class="btn btn-primary">Send Message</button>
+            <button type="submit"  class="btn btn-primary">Send Message</button>
 
           </form>
+
+           <!--this is for the snack bar-->
+            <div id="snackbar">Thank you for your message. We will get back to you soon.</div>
+          
 
           <ul class="contact-list">
 
@@ -796,31 +853,11 @@
   <script src="https://www.gstatic.com/firebasejs/9.0.0/firebase-app.js"></script>
 <script src="https://www.gstatic.com/firebasejs/9.0.0/firebase-database.js"></script>
 
-  
-<script type="module">
-  // Import the functions you need from the SDKs you need
-  import { initializeApp } from "https://www.gstatic.com/firebasejs/9.17.2/firebase-app.js";
-  import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.17.2/firebase-analytics.js";
-  // TODO: Add SDKs for Firebase products that you want to use
-  // https://firebase.google.com/docs/web/setup#available-libraries
+<script src="https://www.gstatic.com/firebasejs/9.0.0/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.0.0/firebase-database.js"></script>
 
-  // Your web app's Firebase configuration
-  // For Firebase JS SDK v7.20.0 and later, measurementId is optional
-  const firebaseConfig = {
-    apiKey: "AIzaSyApch3heZSrrUT5m0ti5j13BRM094cwNUM",
-    authDomain: "lydiamarketing-3c3aa.firebaseapp.com",
-    databaseURL: "https://lydiamarketing-3c3aa-default-rtdb.firebaseio.com",
-    projectId: "lydiamarketing-3c3aa",
-    storageBucket: "lydiamarketing-3c3aa.appspot.com",
-    messagingSenderId: "546275863482",
-    appId: "1:546275863482:web:d316684fb9734f2a224b83",
-    measurementId: "G-9Q42JKVCLP"
-  };
-
-  // Initialize Firebase
-  const app = initializeApp(firebaseConfig);
-  const analytics = getAnalytics(app);
-</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/firebase/7.14.1-0/firebase.js"></script>
+<script src="./message.js"></script>
 
   <!-- 
     - ionicon link
