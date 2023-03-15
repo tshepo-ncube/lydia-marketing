@@ -185,6 +185,14 @@ body {
   transition: var(--transition-1);
 }
 
+/* Tshepo */
+
+.bg_gradient_tshepo {
+  
+  background-color: var(--gradient);;
+  /*background-color:red;var(--gradient); ; */
+}
+
 .btn-primary {
   background-image: var(--gradient);
   background-size: 1000%;
