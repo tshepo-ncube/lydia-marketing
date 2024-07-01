@@ -59,5 +59,5 @@ function showSnackbar() {
     document.querySelector('#phone_number').value = '';
     const message = document.createElement('p');
   message.textContent = 'Thank you for contacting us. We will get back to you soon.';
-  form.appendChild(message);
+  //form.appendChild(message);
   });
