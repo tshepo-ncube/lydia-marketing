@@ -22,7 +22,7 @@ function showSnackbar() {
   }
   
 
-  var contactFormDB = firebase.database().ref("contactForm");
+  var contactFormDB = firebase.database().ref("MessageForm");
 
   document.querySelector('form').addEventListener('submit', function(e) {
     e.preventDefault(); // Prevent the form from actually submitting
